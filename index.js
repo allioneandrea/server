@@ -4,7 +4,7 @@ const app = express()
 const mysql = require("mysql")
 
 const PUERTO = 3001
-const BASE_URL = "https://server-ten-rouge.vercel.app:"+PUERTO
+const BASE_URL = "https://server-xi-orpin.vercel.app"
 
 app.use(cors())
 app.use(express.json())
@@ -19,7 +19,7 @@ const db = mysql.createConnection({
 })
 
 
-app.get('/api/horario', (req,res) => {
+app.get(BASE_URL+'/api/horario', (req,res) => {
 
     db.query("SELECT * FROM horario ORDER BY inicio ASC", (err, result) => {
         res.send(result)
@@ -27,7 +27,7 @@ app.get('/api/horario', (req,res) => {
     
 })
 
-app.post('/api/updatehorario',(req, res) => {
+app.post(BASE_URL+'/api/updatehorario',(req, res) => {
     const inicio = req.body.inicio
     const fin = req.body.fin
     const pedidos = req.body.pedidos
@@ -39,7 +39,7 @@ app.post('/api/updatehorario',(req, res) => {
         })
     })
 })
-app.post('/api/inserthorario',(req, res) => {
+app.post(BASE_URL+'/api/inserthorario',(req, res) => {
 
     const fin = req.body.fin
     const pedidos = req.body.pedidos
