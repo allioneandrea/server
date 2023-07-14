@@ -9,6 +9,10 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+app.get("/", (req,res) => {
+    res.send({"inicio": "inicio"})
+})
+
 app.listen(PORT, () => {
     console.log('escuchando en el puerto: '+PORT)
 })
