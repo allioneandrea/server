@@ -19,7 +19,7 @@ const db = mysql.createConnection({
 })
 
 
-app.get(BASE_URL+'/api/horario', (req,res) => {
+app.get('/api/horario', (req,res) => {
 
     db.query("SELECT * FROM horario ORDER BY inicio ASC", (err, result) => {
         res.send(result)
@@ -27,7 +27,7 @@ app.get(BASE_URL+'/api/horario', (req,res) => {
     
 })
 
-app.post(BASE_URL+'/api/updatehorario',(req, res) => {
+app.post('/api/updatehorario',(req, res) => {
     const inicio = req.body.inicio
     const fin = req.body.fin
     const pedidos = req.body.pedidos
@@ -39,7 +39,7 @@ app.post(BASE_URL+'/api/updatehorario',(req, res) => {
         })
     })
 })
-app.post(BASE_URL+'/api/inserthorario',(req, res) => {
+app.post('/api/inserthorario',(req, res) => {
 
     const fin = req.body.fin
     const pedidos = req.body.pedidos
