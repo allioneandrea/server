@@ -39,6 +39,15 @@ app.post('/api/updatehorario',(req, res) => {
         })
     })
 })
+
+app.post('/api/deletehorario',(req, res) => {
+    const id = req.body.id
+    db.query("DELETE horario WHERE id=?", [ id], (err,result) => {
+        db.query("SELECT * FROM horario", (err, results) => {
+            res.send(results)
+        })
+    })
+})
 app.post('/api/inserthorario',(req, res) => {
 
     const fin = req.body.fin
